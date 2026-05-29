@@ -10,23 +10,25 @@ extern "C" {
 	# include "sha256.h"
 }
 
-std::string calcular_sha256(std::string_view Cam_Arquivo) {
+void ql(int i) { std::cout << "\n"; }
 
-	std::ifstream Arquivo(std::string(Cam_Arquivo), std::ios::binary);
+std::string Hash_Sha256(std::string_view File_Path) {
+
+	std::ifstream File(std::string(File_Path), std::ios::binary);
 	
-	if (!Arquivo.is_open()) { return ""; }
+	if (!File.is_open()) { return ""; }
 	
 	SHA256_CTX Ctx;
 	unsigned char hash[32];
 	
 	sha256_init(&Ctx);
 	
-	const size_t TAM_BUFFER = 4096;
-	std::array<char, TAM_BUFFER> buffer;
+	const size_t Size_Buffer = 4096;
+	std::array<char, Size_Buffer> Buffer;
 	
-	while (Arquivo.read(buffer.data(), buffer.size()) || Arquivo.gcount() > 0) {
-		std::streamsize Bytes_Lidos = Arquivo.gcount();
-		sha256_update(&Ctx, reinterpret_cast<const unsigned char*>(buffer.data()), Bytes_Lidos);
+	while (File.read(Buffer.data(), Buffer.size()) || File.gcount() > 0) {
+		std::streamsize Bytes_Read = File.gcount();
+		sha256_update(&Ctx, reinterpret_cast<const unsigned char*>(Buffer.data()), Bytes_Read);
 	}
     
     sha256_final(&Ctx, hash);

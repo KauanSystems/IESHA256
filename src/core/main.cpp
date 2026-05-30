@@ -5,20 +5,17 @@
 
 # include "hash.hpp"
 
-int main (int argv, char* argc[]) {
+int main (int argc, char* argv[]) {
 
-auto args = std::span(argc, argv);
-auto pass = args.subspan(1);
+auto const args = std::span(argv + 1, argc - 1);
 
-ql(1);
-
-for (const char* p : pass) {
+for (const char* p : args) {
 	if (std::ifstream file(p); !file.is_open()) {
-		std::cout << "· File: " << p << " NOT Exists.\n";
+		std::cout << "\nFile: " << p << " NOT Exists.\n";
 	} else {
-		std::string Hash_File = Hash_Sha256(p);
+		auto Hash_File = Hash_Sha256(p);
 		
-		std::cout << "File: " << p << "    SHA-256:   " << Hash_File << "\n\n";	
+		std::cout << "\nFile: " << p << "    SHA-256:   " << Hash_File.value() << "\n\n";	
 	}
 }
 

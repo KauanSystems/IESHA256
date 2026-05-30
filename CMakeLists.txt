@@ -21,7 +21,7 @@ file(
 set(SHA_DIR "${CMAKE_SOURCE_DIR}/external/sha/")
 
 file(GLOB SHA_SOURCES 
-    "${SHA_DIR}/*.c" 
+    "${SHA_DIR}/*.cpp" 
     "${SHA_DIR}/*.h"
 )
 

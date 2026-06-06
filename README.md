@@ -1,4 +1,4 @@
-IESHA256 - A custom hash calculator in C++20 and C.
+ Signature - A custom hash calculator in C++20 and C.
 
 [![C++ Standard: 20](https://img.shields.io/badge/C%2B%2B-20-blue.svg)](https://en.cppreference.com/w/cpp/20)
 [![Platform: Linux](https://img.shields.io/badge/platform-Linux-lightgrey.svg)](https://www.kernel.org)
@@ -12,8 +12,8 @@ Optimized for **Linux** (x86_64). Requires a compiler with C++20.
 
 ```bash
 # Clone the repository
-git clone https://github.com/KauanSystems/IESHA256.git
-cd IESHA256
+git clone https://github.com/KauanSystems/Signature.git
+cd  Signature
 
 # Run the industrial build and benchmark suite for a bash.
 chmod +x run.sh
@@ -26,6 +26,6 @@ chmod +x run.sh
 # In the program folder open in terminal
 # The program supports multiple files
 
-./IESHA256 File_for_calculating_hash
+./Signature File_for_calculating_hash
  
 ```
